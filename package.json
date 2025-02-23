@@ -1,0 +1,28 @@
+{
+  "name": "cdp-fabrykatestow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pzwierzchowski/CDP-FabrykaTestow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pzwierzchowski/CDP-FabrykaTestow/issues"
+  },
+  "homepage": "https://github.com/pzwierzchowski/CDP-FabrykaTestow#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "^12.3.0"
+  },
+  "dependencies": {
+    "cypress-localstorage-commands": "^2.2.2",
+    "faker": "^5.5.3"
+  }
+}
