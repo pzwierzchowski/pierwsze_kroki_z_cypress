@@ -1,34 +1,31 @@
-describe('TS2 - Check httpstat API', () => {
-    
-  it('should make requests to httpstat', function () {
-      cy.request('http://httpstat.us/200')
-      
-      cy.request(
-         {
-          url: 'http://httpstat.us/404',
-          failOnStatusCode : false
-         })
+require('cypress-iframe')
 
-      cy.request(
-         {
-          url: 'http://httpstat.us/500',
-          failOnStatusCode : false
-         }).then(
-              (response) => {
-                  const body = response.body
-                  cy.log(body)
-                  expect(response.status).to.eq(500)
-              })  
-      
-      cy.request(
-          {
-           url: 'http://httpstat.us/418',
-           failOnStatusCode : false
-          }).then(
-               (response) => {
-                   const body = response.body
-                   cy.log(body)
-                   expect(response.status).to.eq(418)
-               })
-  })  
-});
+describe('my first scenario', () => {
+
+  it('should click iframe button on main page - option 2', function(){
+    cy.visit('https://simpletestsite.fabrykatestow.pl')
+    cy.get('#iframe-header').click()
+    
+    const firstButton = '#simpleButton1'
+    const resultMsg = '#whichButtonIsClickedMessage'
+    const iFrame = 'iframe'
+    const iframeTest = () => {
+    return cy.get(iFrame)
+        .its('0.contentDocument.body')
+        .should('be.visible')
+        .then(cy.wrap)
+        }
+    iframeTest().find(firstButton).click()
+    iframeTest().find(resultMsg).should('have.text', 'Button 1 was clicked!')
+  })
+
+  it('should click iframe button on main page - option 2', function(){
+    cy.visit('https://simpletestsite.fabrykatestow.pl')
+    cy.get('#iframe-header').click()
+    
+    const iframeButton2 = '#simpleButton2'
+    const message = '#whichButtonIsClickedMessage'
+    cy.iframe().find(iframeButton2).should('be.visible').click()
+    cy.iframe().find(message).should('have.text', 'Button 2 was clicked!')
+  })
+})

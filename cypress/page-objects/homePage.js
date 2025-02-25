@@ -4,7 +4,6 @@ const myAccountHeaderButton = '#menu-item-100'
 const dataBlockNameNew = 'div[data-block-name="woocommerce/product-new"]'
 const checkCartFromProductLevel = '.added_to_cart.wc-forward'
 
-
 export const Product = {
     HoodieWithZipper: {
         Localtor: 'a[data-product_id="51"]',
@@ -19,7 +18,6 @@ export const Product = {
         Name: 'Sunglasses'
     }
 }
-
 
 class HomePage {
 
@@ -39,9 +37,10 @@ class HomePage {
         })
     }
 
-    visitPage() {
+    visitPage(appVersion) {
         const urls = new Urls
         urls.visitHomePage()
+        cy.get('.site-info').contains(appVersion)
     }
 }
 

@@ -4,7 +4,7 @@ describe('my first scenario', () => {
   const homePage = new HomePage();
 
   it('should check all links on my page', function(){
-    homePage.visitPage()
+    homePage.visitPage('v. 2.1.7 2025')
 
     cy.get('a').each(link => {
       if (link.prop('href'))
