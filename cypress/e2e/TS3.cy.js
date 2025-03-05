@@ -2,7 +2,7 @@ require('cypress-iframe')
 
 describe('my first scenario', () => {
 
-  it('should click iframe button on main page - option 2', function(){
+  it('should click iframe button on main page - option 1', function(){
     cy.visit('https://simpletestsite.fabrykatestow.pl')
     cy.get('#iframe-header').click()
     
@@ -10,11 +10,11 @@ describe('my first scenario', () => {
     const resultMsg = '#whichButtonIsClickedMessage'
     const iFrame = 'iframe'
     const iframeTest = () => {
-    return cy.get(iFrame)
+      return cy.get(iFrame)
         .its('0.contentDocument.body')
         .should('be.visible')
         .then(cy.wrap)
-        }
+      }
     iframeTest().find(firstButton).click()
     iframeTest().find(resultMsg).should('have.text', 'Button 1 was clicked!')
   })
